@@ -4,6 +4,25 @@ int s[501][501],pdm[501][501], c, r;
 
 int min(int a, int b){return a > b ? b : a;}
 
+int max(int a, int b){return a < b ? b : a;}
+
+int ab(int a){ return a < 0 ? a*-1: a;}
+
+int rec(int i, int j){
+	if(i == r-1 && j == c-1){
+		return 1;
+	}else{
+		int chamada1 = 0x7FFFFFFF;
+		int chamada2 = 0x7FFFFFFF;
+		if(i+1 < r)		
+			chamada1 = max(rec(i+1, j)-s[i][j], 1);
+		if(j+1 < c)
+			chamada2 = max(rec(i, j+1)-s[i][j], 1);
+
+		return min(chamada1, chamada2);
+	}
+}
+
 int pd(){
 	pdm[r-1][c-1] = 1;
 

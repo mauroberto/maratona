@@ -8,8 +8,8 @@ typedef pair<int , int> pi;
 int cor[12][12];
 int matriz[12][12];
 int distancia[12][12];
-int a[] = {-1,- 0, 0,1};
-int b[] = { 0, -1, 1,0};
+int a[] = {-1, 0, 0,1};
+int b[] = { 0,-1, 1,0};
 int n, m;
 
 int bfs(pi raiz){

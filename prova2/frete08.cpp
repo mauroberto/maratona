@@ -50,8 +50,6 @@ int primMST() {
 	   	 				w[graph[v][i].first] = graph[v][i].second;
 	  				}
 	  				break;
-				default:
-	  				break;
 			}
 		}
   	}
