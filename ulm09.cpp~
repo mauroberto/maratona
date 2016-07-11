@@ -60,7 +60,7 @@ int Kruskal_MST(){
 		if(!UF.find(u, v)){
 			UF.unite(u, v);
 			T += graph[i].F;
-		}
+			}
 	}
 	return T;
 }
