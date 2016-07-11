@@ -1,7 +1,7 @@
-#include "stdio.h"
-#include "string.h"
-#include "vector"
-#include "algorithm"
+#include <stdio.h>
+#include <vector>
+#include <algorithm>
+#include <queue>
 using namespace std;
 #define pii pair<int, int>
 #define pip pair<int, pii>
@@ -47,19 +47,21 @@ class Union_Find{
 };
 
 
-vector< pip > graph;
+priority_queue < pip, vector<pip>, greater <pip> > graph;
 int n, e;
 
 int Kruskal_MST(){
 	Union_Find UF(n);
 	int u, v;
 	int T = 0;
-	for (int i = 0; i < e; i++){
-		u = graph[i].S.F;
-		v = graph[i].S.S;
+		
+	while(!graph.empty()){
+		pip ini = graph.top(); graph.pop();
+		u = ini.S.F;
+		v = ini.S.S;
 		if(!UF.find(u, v)){
 			UF.unite(u, v);
-			T += graph[i].F;
+			T += ini.F;
 		}
 	}
 	return T;
@@ -71,13 +73,11 @@ int main(){
 		if(e == 0 && n == 0) break;
 		int x, y, z;
 		int total = 0;
-		graph.clear();
 		for(int i=0; i<e; i++){
 			scanf("%d %d %d", &x, &y, &z);
-			graph.push_back(make_pair(z, make_pair(x, y)));
+			graph.push(make_pair(z, make_pair(x, y)));
 			total += z;
 		}
-		sort(graph.begin(), graph.end());
 		printf("%d\n", total - Kruskal_MST());
 	}
 	return 0;
