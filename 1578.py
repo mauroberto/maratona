@@ -1,21 +1,21 @@
 n = int(input())
 
-matriz = []
-
 cont = 4
-for i in range(n):
+for h in range(0, n):
+	matriz = []
 	m = int(input())
-	for i in range(m):
+	for i in range(0,m):
 		l = input()
 		matriz.append(l.split(" "))
 		
 	matrizTamanho = []
-	for i in range(m):
+	for i in range(0,m):
 		matrizTamanho.append(0)
 
-	for j in range(m):
-		for i in range(m):
-			v = (int(matriz[j][i]) * int(matriz[j][i]))
+	for j in range(0,m):
+		for i in range(0,m):
+			it = int(matriz[j][i])
+			v = it*it
 			matriz[j][i] = v
 			t = len(str(v))
 			if t > matrizTamanho[i]:
@@ -24,11 +24,16 @@ for i in range(n):
 	print("Quadrado da matriz #"+str(cont)+":")
 
 	cont += 1
-	for i in range(m):
-		for j in range(m):
+	for i in range(0,m):
+		for j in range(0,m):
 			v = matriz[i][j]
 			t = matrizTamanho[j] - len(str(v))
 			for k in range(t):
 				print(" ", end="")
-			print(str(v)+" ", end="")
+			if(j != m-1):
+				print(str(v)+" ", end="")
+			else:
+				print(str(v), end="")
+		print("")
+	if(h != n-1):
 		print("")				
